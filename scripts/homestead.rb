@@ -10,10 +10,10 @@ class Homestead
     config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
     # Configure The Box
-    if settings["provider"]=="hyperv"
-      config.vm.box = "johnpbloch/homestead"
-    else
+    unless settings["provider"]=="hyperv"
       config.vm.box = "laravel/homestead"
+    else
+      config.vm.box = "johnpbloc/homestead"
     end
     
     config.vm.hostname = settings["hostname"] ||= "homestead"
