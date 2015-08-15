@@ -1,5 +1,5 @@
 {
-    "name": "laravel/homestead",
+    "name": "vanntian/homestead",
     "description": "A virtual machine for web artisans.",
     "require": {
         "php": ">=5.4",
@@ -9,8 +9,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Taylor Otwell",
-            "email": "taylorotwell@gmail.com"
+            "name": "Van Tian",
+            "email": "vantian@live.com"
         }
     ],
     "autoload": {

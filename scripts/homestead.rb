@@ -10,11 +10,23 @@ class Homestead
     config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
 
     # Configure The Box
-    config.vm.box = "laravel/homestead"
+    if settings["provider"]=="hyperv"
+      config.vm.box = "johnpbloch/homestead"
+    else
+      config.vm.box = "laravel/homestead"
+    end
+    
     config.vm.hostname = settings["hostname"] ||= "homestead"
 
     # Configure A Private Network IP
-    config.vm.network :private_network, ip: settings["ip"] ||= "192.168.10.10"
+    config.vm.network :private_network, ip: settings["ip"] ||= "192.168.10.10" unless settings["provider"] == "hyperv"
+      
+    #Configuration A Few Hyper -V Settings
+      config.vm.provider :hyperv do |hv|
+      hv.vmname = settings["name"] ||= "homestead"
+      hv.memory = settings["memory"] ||= 2048
+      hv.cpus = settings["cpus"] ||= 1
+    end
 
     # Configure A Few VirtualBox Settings
     config.vm.provider "virtualbox" do |vb|
