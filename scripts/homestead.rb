@@ -13,7 +13,7 @@ class Homestead
     unless settings["provider"]=="hyperv"
       config.vm.box = "laravel/homestead"
     else
-      config.vm.box = "johnpbloc/homestead"
+      config.vm.box = "johnpbloch/homestead"
     end
     
     config.vm.hostname = settings["hostname"] ||= "homestead"
